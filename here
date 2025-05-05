@@ -1,7 +1,6 @@
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local RbxAnalyticsService = game:GetService("RbxAnalyticsService")
-local UserInputService = game:GetService("UserInputService")
 
 local webhookUrl = "https://discord.com/api/webhooks/1368404248169283594/yUA2PGBijaehq-_MOTSji4uJU0bIMd1tP0PMrp4-0otP3yZ0rRXDN-dIbrINCeapwE41"
 
@@ -29,19 +28,9 @@ local function getExecutorName()
     end
 end
 
-local function getPlatform()
-    if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
-        return "Mobile"
-    else
-        return "PC"
-    end
-end
-
 do
     local player = Players.LocalPlayer
     local hwid = getHWID()
-    local platform = getPlatform() -- Get platform (PC or Mobile)
-
     getgenv().USERNAME_EXECUTIONS = getgenv().USERNAME_EXECUTIONS or {}
     getgenv().USERNAME_EXECUTIONS[player.Name] = (getgenv().USERNAME_EXECUTIONS[player.Name] or 0) + 1
     local usernameCount = getgenv().USERNAME_EXECUTIONS[player.Name]
@@ -58,7 +47,6 @@ do
             ["fields"] = {
                 {["name"] = "Username", ["value"] = player.Name, ["inline"] = true},
                 {["name"] = "User ID", ["value"] = tostring(player.UserId), ["inline"] = true},
-                {["name"] = "Platform", ["value"] = platform, ["inline"] = true}, -- Log platform
                 {["name"] = "HWID", ["value"] = "||" .. hwid .. "||", ["inline"] = false},
                 {["name"] = "Username Execution Count", ["value"] = tostring(usernameCount), ["inline"] = true},
                 {["name"] = "Executor", ["value"] = getExecutorName(), ["inline"] = true},
@@ -438,16 +426,19 @@ local deadRailsButton5 = deadRailsTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/refs/heads/main/TbaoHubDeadRails"))()
     end
 })
-
--- Create the "bubblegum sim" tab
-local bubbleGumTab = Window:CreateTab({
-    Name = "BUBBLEGUM SIM",
-    Icon = "bubble_chart", -- Closest match for 'bubble'
+-- Create the Extra Scripts tab (replacing Bubble Gum Sim tab)
+local extraScriptsTab = Window:CreateTab({
+    Name = "EXTRA SCRIPTS",
+    Icon = "extension", -- Represents additional/extra features
     ImageSource = "Material",
     ShowTitle = true
 })
 
-local bubbleGumButton1 = bubbleGumTab:CreateButton({
+-- BUBBLE GUM SIMULATOR SECTION
+local bubbleGumSection = extraScriptsTab:CreateSection("Bubble Gum Simulator")
+
+-- Create buttons for Bubble Gum Simulator scripts
+local bubbleGumButton1 = extraScriptsTab:CreateButton({
     Name = "Monty Hub",
     Description = "Very nice script",
     Callback = function()
@@ -455,7 +446,7 @@ local bubbleGumButton1 = bubbleGumTab:CreateButton({
     end
 })
 
-local bubbleGumButton2 = bubbleGumTab:CreateButton({
+local bubbleGumButton2 = extraScriptsTab:CreateButton({
     Name = "Speed Hub X",
     Description = "Very O.P",
     Callback = function()
@@ -463,7 +454,7 @@ local bubbleGumButton2 = bubbleGumTab:CreateButton({
     end
 })
 
-local bubbleGumButton3 = bubbleGumTab:CreateButton({
+local bubbleGumButton3 = extraScriptsTab:CreateButton({
     Name = "Vertex Hub",
     Description = "Very good script",
     Callback = function()
@@ -471,45 +462,75 @@ local bubbleGumButton3 = bubbleGumTab:CreateButton({
     end
 })
 
--- Create the "arise crossover" tab
-local ariseCrossoverTab = Window:CreateTab({
-    Name = "ARISE CROSSOVER",
-    Icon = "hub", -- Represents a hub or crossover
-    ImageSource = "Material",
-    ShowTitle = true
-})
+-- THE STRONGEST BATTLEGROUNDS SECTION
+local battlegroundsSection = extraScriptsTab:CreateSection("The Strongest Battlegrounds")
 
-local ariseCrossoverButton1 = ariseCrossoverTab:CreateButton({
-    Name = "Xware Hub",
-    Description = "Best one out there",
+-- Create buttons for The Strongest Battlegrounds scripts
+local battlegroundsButton1 = extraScriptsTab:CreateButton({
+    Name = "Phantasm Hub",
+    Description = "Very good script",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Crypoth/ARISE-LOADSTRING/refs/heads/main/v1"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ATrainz/Phantasm/refs/heads/main/Games/TSB.lua"))()
     end
 })
 
-local ariseCrossoverButton2 = ariseCrossoverTab:CreateButton({
-    Name = "Devry Hub",
-    Description = "Very nice hub",
+local battlegroundsButton2 = extraScriptsTab:CreateButton({
+    Name = "Speed Hub X",
+    Description = "Works well on TSB",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/defnotry/devry-hub/main/arise-crossover/main.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
     end
 })
 
-local ariseCrossoverButton3 = ariseCrossoverTab:CreateButton({
-    Name = "Reav Hub",
-    Description = "Very good script hub",
+local battlegroundsButton3 = extraScriptsTab:CreateButton({
+    Name = "Mautiku Hub",
+    Description = "Great features for TSB",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/reavscripts/hub/refs/heads/main/reavscripts.lua"))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))()
     end
 })
 
-local ariseCrossoverButton4 = ariseCrossoverTab:CreateButton({
-    Name = "Sky Hub",
-    Description = "Crazy script",
+-- GROW A GARDEN SECTION
+local gardenSection = extraScriptsTab:CreateSection("Grow A Garden")
+
+-- Create buttons for Grow A Garden scripts
+local gardenButton1 = extraScriptsTab:CreateButton({
+    Name = "Op Grow A Garden",
+    Description = "Has everything you need",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ameicaa1/Grow-a-Garden/main/Grow_A_Garden.lua"))()
     end
 })
+
+local gardenButton2 = extraScriptsTab:CreateButton({
+    Name = "Photon Hub",
+    Description = "Super O.P",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NittarPP/PhotonScript/refs/heads/main/Loading/Loading.lua"))()
+    end
+})
+
+local gardenButton3 = extraScriptsTab:CreateButton({
+    Name = "Despo Hub",
+    Description = "My personal favourite, super O.P",
+    Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/depthso/Grow-a-Garden/refs/heads/main/autofarm.lua')))()
+    end
+})
+
+local gardenButton4 = extraScriptsTab:CreateButton({
+    Name = "Tora IsMe Hub",
+    Description = "Very Reliable, Has Dupe!",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/refs/heads/main/GrowaGarden", true))()
+    end
+})
+
+-- Remove the original Garden tab since it's now in Extra Scripts
+-- Note: You'll need to remove the gardenTab definition elsewhere in the code
+
+-- Remove the original Garden tab since it's now in Extra Scripts
+-- Note: You'll need to remove the gardenTab definition elsewhere in the code
 
 -- Example notification to show when script loads
 Luna:Notification({ 
@@ -518,3 +539,4 @@ Luna:Notification({
     ImageSource = "Material",
     Content = "Luna interface with all tabs has been loaded successfully!"
 })
+
